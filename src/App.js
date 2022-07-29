@@ -71,7 +71,7 @@ const App = () => {
           <div className="search" onClick={() => NFTsearch(address)}>Get NFT</div>
           {image && <img src={image} alt="nft" />}
           {name && <div className="name">{name}</div>}
-          {royal && <div>Royalities percentage: {royal/100}%npm install -g node-prune</div>}
+          {royal && <div>Royalities percentage: {royal/100}%</div>}
           
         </div>
         <img className="pwr" src={moralis} alt="powered"/>
