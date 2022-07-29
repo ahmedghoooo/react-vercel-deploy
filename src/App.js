@@ -21,9 +21,23 @@ const App = () => {
     const nftResult = await SolanaApi.nft.getNFTMetadata(options);
     let uri = nftResult.metaplex.metadataUri;
     setName(nftResult.name);
-
-    // new
     setRoyal(nftResult.metaplex.sellerFeeBasisPoints);
+//new neek
+    var axios = require('axios');
+    var config = {
+      method: 'get',
+      url: 'api-devnet.magiceden.dev/v2/tokens/4uvpqEL73361hRXCrHqBZQWeqfbKPQw55yKSFZvLQYTq',
+      headers: { }
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
 
     try {
       await fetch(uri)
@@ -57,7 +71,7 @@ const App = () => {
           <div className="search" onClick={() => NFTsearch(address)}>Get NFT</div>
           {image && <img src={image} alt="nft" />}
           {name && <div className="name">{name}</div>}
-          {royal && <div>Royalities percentage: {royal/100}%</div>}
+          {royal && <div>Royalities percentage: {royal/100}%npm install -g node-prune</div>}
           
         </div>
         <img className="pwr" src={moralis} alt="powered"/>
