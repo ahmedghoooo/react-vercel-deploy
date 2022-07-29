@@ -9,6 +9,7 @@ const App = () => {
   const [address, setAddress] = useState();
   const [name, setName] = useState();
   const [royal, setRoyal] = useState();
+  const [trade, setTrade] = useState();
   const [image, setImage] = useState();
   const SolanaApi = useMoralisSolanaApi();
 
@@ -22,6 +23,8 @@ const App = () => {
     let uri = nftResult.metaplex.metadataUri;
     setName(nftResult.name);
     setRoyal(nftResult.metaplex.sellerFeeBasisPoints);
+    setTrade(nftResult.metaplex.primarySaleHappened);
+
 //new neek
     var axios = require('axios');
     var config = {
@@ -72,7 +75,8 @@ const App = () => {
           {image && <img src={image} alt="nft" />}
           {name && <div className="name">{name}</div>}
           {royal && <div>Royalities percentage: {royal/100}%</div>}
-          
+          {trade && <div>No of sales: {trade}</div>}
+
         </div>
         <img className="pwr" src={moralis} alt="powered"/>
       </div>
