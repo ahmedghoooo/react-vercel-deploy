@@ -22,6 +22,9 @@ const App = () => {
     let uri = nftResult.metaplex.metadataUri;
     setName(nftResult.name);
 
+    // new
+    setRoyal(nftResult.metaplex.sellerFeeBasisPoints);
+
     try {
       await fetch(uri)
         .then((response) => response.json())
@@ -54,7 +57,7 @@ const App = () => {
           <div className="search" onClick={() => NFTsearch(address)}>Get NFT</div>
           {image && <img src={image} alt="nft" />}
           {name && <div className="name">{name}</div>}
-          {royal && <div className="name">{royal}</div>}
+          {royal && <div>{royal}</div>}
           
         </div>
         <img className="pwr" src={moralis} alt="powered"/>
