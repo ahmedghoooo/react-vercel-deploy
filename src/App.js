@@ -10,9 +10,11 @@ const App = () => {
   const [name, setName] = useState();
   const [royal, setRoyal] = useState();
   const [trade, setTrade] = useState();
+  const [symbol, setSymbol] = useState();
   const [image, setImage] = useState();
   const SolanaApi = useMoralisSolanaApi();
 
+  
   async function NFTsearch(address) {
     const options = {
       network: "mainnet",
@@ -22,24 +24,9 @@ const App = () => {
     const nftResult = await SolanaApi.nft.getNFTMetadata(options);
     let uri = nftResult.metaplex.metadataUri;
     setName(nftResult.name);
+    setSymbol(nftResult.symbol);
     setRoyal(nftResult.metaplex.sellerFeeBasisPoints);
     setTrade(nftResult.metaplex.primarySaleHappened);
-
-//new neek
-    var axios = require('axios');
-    var config = {
-      method: 'get',
-      url: 'api-devnet.magiceden.dev/v2/tokens/4uvpqEL73361hRXCrHqBZQWeqfbKPQw55yKSFZvLQYTq',
-      headers: { }
-    };
-    
-    axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
 
 
     try {
@@ -75,6 +62,7 @@ const App = () => {
           {image && <img src={image} alt="nft" />}
           {name && <div className="name">{name}</div>}
           {royal && <div>Royalities percentage: {royal/100}%</div>}
+          {symbol && <div>Symbol: {symbol}</div>}
           {trade && <div>No of sales: {trade}</div>}
 
         </div>
