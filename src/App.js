@@ -9,11 +9,9 @@ const App = () => {
   const [address, setAddress] = useState();
   const [name, setName] = useState();
   const [royal, setRoyal] = useState();
-  const [trade, setTrade] = useState();
   const [symbol, setSymbol] = useState();
   const [image, setImage] = useState();
   const SolanaApi = useMoralisSolanaApi();
-
   
   async function NFTsearch(address) {
     const options = {
@@ -26,8 +24,6 @@ const App = () => {
     setName(nftResult.name);
     setSymbol(nftResult.symbol);
     setRoyal(nftResult.metaplex.sellerFeeBasisPoints);
-    setTrade(nftResult.metaplex.primarySaleHappened);
-
 
     try {
       await fetch(uri)
@@ -39,7 +35,6 @@ const App = () => {
       console.log("couldnt get image");
     }
   }
-
   return (
     <>
       <div
@@ -63,7 +58,6 @@ const App = () => {
           {name && <div className="name">{name}</div>}
           {royal && <div>Royalities percentage: {royal/100}%</div>}
           {symbol && <div>Symbol: {symbol}</div>}
-          {trade && <div>No of sales: {trade}</div>}
 
         </div>
         <img className="pwr" src={moralis} alt="powered"/>
